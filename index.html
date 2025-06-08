@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YTN Science</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-area">
+      <a href="#">
+        <img src="images/ytn_logo.png" alt="YTN Science 로고" style="height: 40px;">
+      </a>
+    </div>
+    <nav>
+      <a href="#">영상</a>
+      <div class="dropdown">
+        <a href="#">학습</a>
+        <div class="dropdown-content">
+          <a href="#">실험</a>
+          <a href="#">퀴즈</a>
+          <a href="#">복습 게임</a>
+          <a href="#">과학 뉴스</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">교구</a>
+        <div class="dropdown-content">
+          <a href="#">수업 자료</a>
+          <a href="#">실험 과제</a>
+          <a href="#">3D 시뮬레이션</a>
+          <a href="#">AI 단원평가지</a>
+        </div>
+      </div>
+      <a href="#">AI실험교실</a>
+    </nav>
+    <div class="login">
+      <a href="login.html">로그인</a> | <a href="#">회원가입</a>
+    </div>
+  </header>
+
+  <section class="tree-section">
+    <div class="tree-top">
+      <div class="tree-description">
+        나무를 흔들어보세요<br>
+        <span><img src="images/aaa.png" alt="느낌표" class="aaa">나무를 클릭해 보세요</span>
+      </div>
+      <div id="tree-container">
+        <img id="tree" src="images/tree_origin.png" alt="나무 이미지">
+        <img class="apple" src="images/apple.png" style="top: 86px; left: 100px;">
+        <img class="apple" src="images/apple.png" style="top: 79px; left: 186px;">
+        <img class="apple" src="images/apple.png" style="top: 200px; left: 160px;">
+        <img class="apple" src="images/apple.png" style="top: 130px; left: 300px;">
+        <img class="apple" src="images/apple.png" style="top: 150px; left: 260px;">
+      </div>
+    </div>
+
+    <div class="search-box" id="searchBox">
+      <div class="search-input-wrapper">
+        <input type="text" placeholder="🔍︎  키워드를 검색하세요">
+        <i class="fas fa-search"></i>
+        <img id="sortButton" class="sort-btn" src="images/sort.png" alt="정렬">
+        <button id="clearButton" class="clear-btn">✕</button>
+      </div>
+      <div class="suggestions" id="suggestions"></div>
+      <div id="filterPanel">
+        <button id="closeFilterButton">✕</button>
+        <h3>영상 필터</h3>
+        <select>
+          <option>교사 평점</option>
+          <option selected>조회수</option>
+          <option>AI 추천</option>
+        </select>
+        <select>
+          <option>1일 전</option>
+          <option>1주 전</option>
+          <option>1달 전</option>
+        </select>
+        <select>
+          <option>5분 이하</option>
+          <option>5~20분</option>
+          <option>20분 이상</option>
+        </select>
+        <div class="filter-buttons">
+          <button onclick="resetFilter()">초기화</button>
+          <button onclick="applyFilter()">적용하기</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-toggle">
+      <button class="active">과목별</button>
+      <button>학년별</button>
+    </div>
+
+    <div class="category-icons">
+      <a href="chemistry.html"><img src="images/chemical.png" alt="화학"></a>
+      <a href="physics.html"><img src="images/physics.png" alt="물리학"></a>
+      <a href="biology.html"><img src="images/biological.png" alt="생명과학"></a>
+      <a href="earthscience.html"><img src="images/geoscience.png" alt="지구과학"></a>
+      <a href="appliedscience.html"><img src="images/appliedscience.png" alt="응용과학"></a>
+    </div>
+
+    <div class="grade-icons">
+      <div><a href="elementary.html"><img src="images/elementary.png" alt="초등"></a></div>
+      <div><a href="middle.html"><img src="images/middle.png" alt="중등"></a></div>
+      <div><a href="high.html"><img src="images/high.png" alt="고등"></a></div>
+    </div>
+  </section>
+
+  <hr>
+
+  <footer>
+    <div class="footer-left">
+      <div class="footer-links">
+        <a href="#">사이트 소개</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">찾아오시는 길</a>
+        <a href="#">1:1 문의</a>
+      </div>
+      <div class="footer-bottom">
+        <p>주소 및 기타사항 ...<br>
+          대표 전화...               Email...</p>
+      </div>
+    </div>
+    <div class="footer-logo">
+      <img src="images/ytnXwink.png" alt="YTN x Swink" width="200" height="28">
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTN Science - 로그인</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기존 스타일 유지 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px 60px;
+            font-weight: 500;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            margin-left: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 30px;
+            text-decoration: none;
+            color: #000;
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        nav a:hover::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-color: #007aff;
+            border-radius: 20px;
+            z-index: -1;
+            padding: 8px 20px;
+            box-sizing: content-box;
+        }
+
+        .dropdown:hover>a {
+            color: #fff;
+        }
+
+        .dropdown:hover>a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-color: #007aff;
+            border-radius: 20px;
+            z-index: -1;
+            padding: 8px 20px;
+            box-sizing: content-box;
+        }
+
+        .dropdown {
+            position: relative;
+            padding: 12px 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ccc;
+            min-width: 130px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 0px;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 15px 20px;
+            color: #fff !important;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+        .dropdown-content a:hover::before {
+            content: none;
+        }
+
+        .login {
+            margin-left: 900px;
+            font-size: 0.9rem;
+        }
+
+        .login-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+        }
+
+        .login-box {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            width: 600px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .password-input-group {
+            position: relative;
+        }
+
+        .password-input-group input {
+            padding-right: 70px;
+        }
+
+        .password-input-group .show-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007aff;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            text-align: left;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password a {
+            color: #007aff !important;
+            text-decoration: none;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #ccc;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: default;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button.active {
+            background-color: #007aff;
+            cursor: pointer;
+        }
+
+        .signup-text {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .signup-text a {
+            color: #007aff !important;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            margin-top: 60px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 40px 60px;
+            background-color: #f9f9f9;
+            font-size: 0.9rem;
+            color: #777;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: -30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            display: block;
+            margin-top: 10px;
+        }
+
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active,
+        a:focus {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-area">
+            <a href="index.html"><img src="images/ytn_logo.png" alt="YTN Science 로고" style="height: 40px;"></a>
+        </div>
+        <nav>
+            <a href="#">영상</a>
+            <div class="dropdown">
+                <a href="#">학습</a>
+                <div class="dropdown-content">
+                    <a href="#">실험</a>
+                    <a href="#">퀴즈</a>
+                    <a href="#">복습 게임</a>
+                    <a href="#">과학 뉴스</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">교구</a>
+                <div class="dropdown-content">
+                    <a href="#">수업 자료</a>
+                    <a href="#">실험 과제</a>
+                    <a href="#">3D 시뮬레이션</a>
+                    <a href="#">AI 단원평가지</a>
+                </div>
+            </div>
+            <a href="#">AI실험교실</a>
+        </nav>
+        <div class="login">
+            <a href="login.html">로그인</a> | <a href="#">회원가입</a>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h2>로그인</h2>
+            <div class="input-group">
+                <input type="text" placeholder="이메일 또는 전화" id="emailOrPhone">
+            </div>
+            <div class="input-group password-input-group">
+                <input type="password" placeholder="비밀번호" id="password">
+                <span class="show-password" id="showPassword">표시</span>
+            </div>
+            <div class="forgot-password">
+                <a href="#">비밀번호를 잊으셨나요?</a>
+            </div>
+            <button class="login-button" id="loginButton">로그인</button>
+            <div class="signup-text">
+                계정이 없으신가요?<a href="#"> 회원가입</a>
+            </div>
+            <div class="error-message" id="errorMessage">아이디 또는 비밀번호가 잘못되었습니다.</div>
+            <div class="success-message" id="successMessage">로그인 성공!</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <div class="footer-left">
+            <div class="footer-links">
+                <a href="#">사이트 소개</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">찾아오시는 길</a>
+                <a href="#">1:1 문의</a>
+            </div>
+            <div class="footer-bottom">
+                <p>주소 및 기타사항 ...<br>
+                    대표 전화...               Email...</p>
+            </div>
+        </div>
+        <div class="footer-logo">
+            <img src="images/ytnXwink.png" alt="YTN x Swink" width="200" height="28">
+        </div>
+    </footer>
+
+    <script>
+        // Password show/hide functionality
+        const showPassword = document.getElementById('showPassword');
+        const passwordInput = document.getElementById('password');
+        const emailOrPhoneInput = document.getElementById('emailOrPhone');
+        const loginButton = document.getElementById('loginButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        showPassword.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                showPassword.textContent = '숨김';
+            } else {
+                passwordInput.type = 'password';
+                showPassword.textContent = '표시';
+            }
+        });
+
+        // Enable/disable login button based on input
+        function checkInputs() {
+            if (emailOrPhoneInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+                loginButton.classList.add('active');
+            } else {
+                loginButton.classList.remove('active');
+            }
+        }
+
+        emailOrPhoneInput.addEventListener('input', checkInputs);
+        passwordInput.addEventListener('input', checkInputs);
+
+        // Handle login button click
+        loginButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default action
+            if (!loginButton.classList.contains('active')) {
+                return; // Do nothing if button is not active
+            }
+
+            const id = emailOrPhoneInput.value.trim();
+            const pw = passwordInput.value.trim();
+
+            // Check if ID and password are '1234'
+            if (id === '1234' && pw === '1234') {
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'block';
+                // Redirect to index.html after 1 second
+                setTimeout(() => {
+                    window.location.href = 'index2.html'; // Adjust to 'Untitled-1.html' if needed
+                }, 1000);
+            } else {
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
