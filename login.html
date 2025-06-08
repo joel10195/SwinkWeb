@@ -290,6 +290,120 @@
             color: #000;
             text-decoration: none;
         }
+
+        /* 반응형 웹 디자인을 위한 미디어 쿼리 */
+        @media (max-width: 1200px) {
+            .login {
+                margin-left: auto;
+            }
+
+            nav {
+                margin-left: 50px;
+            }
+
+            .search-box {
+                width: 90%;
+            }
+
+            .category-toggle {
+                flex-direction: column;
+                align-items: center;
+                margin-left: 0;
+            }
+
+            .category-icons,
+            .grade-icons {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                margin-left: 0;
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .login {
+                margin-left: 0;
+                margin-top: 10px;
+                align-self: flex-end;
+            }
+
+            .tree-top {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .tree-description {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            #tree {
+                width: 300px;
+                height: auto;
+            }
+
+            .search-box {
+                width: 100%;
+                padding: 15px 20px;
+            }
+
+            #filterPanel {
+                width: 90%;
+                left: 50%;
+            }
+
+            .category-icons img,
+            .grade-icons img {
+                width: 60px;
+                height: 60px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-left,
+            .footer-links {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                margin: 10px 0;
+            }
+
+            .search-box input {
+                font-size: 0.9rem;
+            }
+
+            .clear-btn {
+                font-size: 1rem;
+            }
+
+            .category-icons img,
+            .grade-icons img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .suggestions div {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 
