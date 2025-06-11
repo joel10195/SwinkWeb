@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (playerWrapper) {
         playerWrapper.addEventListener('click', function playVideo() {
-            const youtubeVideoUrl = 'https://www.youtube.com/watch?v=TftycSYuckg&t=2s'; // 여기에 실제 외부 영상 링크
+            const youtubeVideoUrl = 'https://www.youtube.com/embed/TftycSYuckg?si=UyvAJjbXRSjOqt-v'; // 여기에 실제 외부 영상 링크
 
             this.innerHTML = `<iframe 
                 src="${youtubeVideoUrl}?autoplay=1&mute=1" 
