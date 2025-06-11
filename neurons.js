@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (playerWrapper) {
         playerWrapper.addEventListener('click', function playVideo() {
             // 쿼리 파라미터는 &로 이어야 함 (이미 ?si=... 붙어 있음)
-            const youtubeVideoUrl = 'https://www.youtube.com/embed/TftycSYuckg?si=UyvAJjbXRSjOqt-v&autoplay=1&mute=1';
+            const youtubeVideoUrl = 'https://player.vimeo.com/video/1092426344?context=Vimeo%5CController%5CApi%5CResources%5CVideoController.&h=994ce2662b&s=5cb0888b97cf2be2659033d1b4c950a5c6f8f5ea_1749742399';
 
             this.innerHTML = `<iframe 
                 src="${youtubeVideoUrl}" 
