@@ -230,6 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mainContentSections.forEach(sec => sec.style.display = 'none');
       detailSection.style.display = 'block';
       attachPlayEvent();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     backLink.addEventListener('click', (event) => {
