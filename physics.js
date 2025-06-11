@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   // ======================================================
   // 1. index.js에서 가져온 기존 '틀 코드' 기능
   // ======================================================
-  // 이 부분은 physics.html에 해당 요소가 없을 수 있으므로,
-  // 에러 방지를 위해 각 기능마다 if문으로 감싸줌
   const tree = document.getElementById('tree');
   if (tree) {
     const apples = document.querySelectorAll('.apple');
@@ -190,83 +187,65 @@ document.addEventListener('DOMContentLoaded', () => {
           videoItems.sort((a, b) => {
             const dateA_text = a.querySelector('.date').textContent.trim();
             const dateB_text = b.querySelector('.date').textContent.trim();
-            
-            // 더 안정적인 날짜 파싱 로직으로 변경
             const partsA = dateA_text.split('.').map(part => parseInt(part.trim(), 10));
             const partsB = dateB_text.split('.').map(part => parseInt(part.trim(), 10));
-
-            // 월(month)은 0부터 시작하므로 -1 해줘야 함
             const dateA = new Date(partsA[0], partsA[1] - 1, partsA[2]);
             const dateB = new Date(partsB[0], partsB[1] - 1, partsB[2]);
-
-            return dateB - dateA; // 최신순 정렬
+            return dateB - dateA;
           });
           videoItems.forEach(item => videoGrid.appendChild(item));
-
         } else if (filterType === '전체') {
           originalOrderElements.forEach(item => videoGrid.appendChild(item));
         }
       });
     });
   }
-});
 
-// ===============================================
-// 달고나 영상 상세 페이지 보기 및 재생 기능 (수정본)
-// ===============================================
-document.addEventListener('DOMContentLoaded', () => {
-    const dalgonaLink = document.getElementById('dalgona-video-link');
-    const backLink = document.getElementById('back-to-list-link');
-    const detailSection = document.getElementById('video-detail-section');
-    const detailPlayerWrapper = document.getElementById('detail-player-wrapper');
-    const mainContentSections = document.querySelectorAll('.physics-content > *:not(#video-detail-section)');
+  // ===============================================
+  // 달고나 영상 상세 페이지 보기 및 재생 기능 (iframe 수정본)
+  // ===============================================
+  const dalgonaLink = document.getElementById('dalgona-video-link');
+  const backLink = document.getElementById('back-to-list-link');
+  const detailSection = document.getElementById('video-detail-section');
+  const detailPlayerWrapper = document.getElementById('detail-player-wrapper');
+  const mainContentSections = document.querySelectorAll('.physics-content > *:not(#video-detail-section)');
 
-    if (dalgonaLink && detailSection && backLink && detailPlayerWrapper) {
-        
-        const originalPlayerHTML = detailPlayerWrapper.innerHTML; // 썸네일+버튼 초기 상태 저장
+  if (dalgonaLink && detailSection && backLink && detailPlayerWrapper) {
+    const originalPlayerHTML = detailPlayerWrapper.innerHTML;
 
-        // 영상 재생 이벤트를 플레이어에 붙여주는 함수
-        const attachPlayEvent = () => {
-            detailPlayerWrapper.addEventListener('click', function playVideoOnce() {
-                // 니가 쓴 파일 이름 그대로 씀. 경로가 정확해야 함.
-                const localVideoSrc = 'videos/sweet.mp4'; 
-                
-                this.innerHTML = `<video 
-                    src="${localVideoSrc}" 
-                    style="position:absolute; top:0; left:0; width:100%; height:100%; border:0; object-fit:cover;" 
-                    autoplay 
-                    controls 
-                    muted>
-                </video>`;
-            }, { once: true }); // once: true 옵션으로 딱 한번만 실행되고 이벤트는 자동 제거됨
-        };
+    const attachPlayEvent = () => {
+      detailPlayerWrapper.addEventListener('click', function playVideoOnce() {
+        const vimeoVideoUrl = 'https://player.vimeo.com/video/1092426963?h=c7932255cb&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+        this.innerHTML = `<iframe 
+          src="${vimeoVideoUrl}" 
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" 
+          allow="autoplay; fullscreen" 
+          allowfullscreen>
+        </iframe>`;
+      }, { once: true });
+    };
 
-        // '달고나' 썸네일 클릭 -> 상세 페이지 보이기
-        dalgonaLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            mainContentSections.forEach(sec => sec.style.display = 'none');
-            detailSection.style.display = 'block';
-            
-            // 상세 페이지가 보일 때, 재생 이벤트를 붙여줌
-            attachPlayEvent();
-        });
+    dalgonaLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      mainContentSections.forEach(sec => sec.style.display = 'none');
+      detailSection.style.display = 'block';
+      attachPlayEvent();
+    });
 
-        // '목록으로' 버튼 클릭 -> 다시 목록 화면으로
-        backLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            detailSection.style.display = 'none';
-            detailPlayerWrapper.innerHTML = originalPlayerHTML; // 플레이어를 다시 원래 썸네일로 복원
-            
-            mainContentSections.forEach(sec => {
-                // 원래 display 값으로 복원
-                if (sec.classList.contains('filter-section')) {
-                    sec.style.display = 'flex';
-                } else if (sec.id === 'popular-videos-section') {
-                    sec.style.display = 'none'; // 목록으로 돌아갈땐 항상 필터 결과 화면으로
-                } else {
-                    sec.style.display = 'block';
-                }
-            });
-        });
-    }
+    backLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      detailSection.style.display = 'none';
+      detailPlayerWrapper.innerHTML = originalPlayerHTML;
+      mainContentSections.forEach(sec => {
+        if (sec.classList.contains('filter-section')) {
+          sec.style.display = 'flex';
+        } else if (sec.id === 'popular-videos-section') {
+          sec.style.display = 'none';
+        } else {
+          sec.style.display = 'block';
+        }
+      });
+      attachPlayEvent();
+    });
+  }
 });
