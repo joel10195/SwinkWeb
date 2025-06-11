@@ -774,9 +774,11 @@ outline: none;
   border: 1px solid #343a40;
   color: #fff;
 }
-body {
-  zoom: 1.0;
-}
+
+.login {
+            margin-left: 800px;
+            font-size: 0.9rem;
+        }
 
 
   @media (max-width: 480px) {
