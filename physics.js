@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const attachPlayEvent = () => {
             detailPlayerWrapper.addEventListener('click', function playVideoOnce() {
                 // 니가 쓴 파일 이름 그대로 씀. 경로가 정확해야 함.
-                const localVideoSrc = 'sweet.mp4'; 
+                const localVideoSrc = 'videos/sweet.mp4'; 
                 
                 this.innerHTML = `<video 
                     src="${localVideoSrc}" 
