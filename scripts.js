@@ -76,10 +76,10 @@ searchInput.addEventListener('input', () => {
       suggestionDiv.textContent = suggestion;
       suggestionDiv.addEventListener('click', () => {
         if (suggestion === '🔍︎  뉴턴                                                                                              물리학 > 중력 > 학자') {
-          window.open('https://www.youtube.com/watch?v=z57L0lwxXLQ', '_blank');
+          window.open('newton.html', '_self');
         }
         if (suggestion === '🔍︎  뉴런                                                                                              생명과학 > 인체 > 신경') {
-          window.open('https://www.youtube.com/watch?v=TftycSYuckg', '_blank');
+          window.open('neurons.html', '_self');
         }
         searchInput.value = suggestion;
         suggestionsBox.style.display = 'none';
