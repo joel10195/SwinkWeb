@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 프레임에 클릭 이벤트 딱 한 번만 실행되게 설정
         playerWrapper.addEventListener('click', function playVideo() {
             // 니 영상 파일 경로. 한글 이름은 나중에 문제될 수 있으니 newton.mp4 처럼 영어로 바꾸는 걸 추천.
-            const localVideoSrc = '뉴턴운동법칙.mp4'; 
+            const localVideoSrc = 'newton.mp4'; 
             
             // 프레임 안의 내용물(썸네일, 재생버튼)을 그냥 영상으로 교체
             this.innerHTML = `<video 
