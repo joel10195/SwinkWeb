@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YTN Science - 물리학</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="physics.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-area">
+      <a href="index.html">
+        <img src="ytn_logo.png" alt="YTN Science 로고" style="height: 40px;">
+      </a>
+    </div>
+    <nav>
+      <a href="#">영상</a>
+      <a href="#">학습</a>
+      <a href="#">교구</a>
+      <a href="#">AI실험교실</a>
+    </nav>
+    <div class="login">
+      <a href="#">가나다 선생님</a> | <a href="#">마이페이지</a> | <a href="#">로그아웃</a>
+    </div>
+  </header>
+
+  <img src="물리학.png" alt="물리학 메인 배너" class="main-banner">
+
+  <main class="physics-content">
+    <h1>물리학</h1>
+    <div class="filter-section">
+      <div class="filter-group">
+        <select id="institution-select">
+          <option value="">교육기관</option>
+          <option value="elementary">초등학교</option>
+          <option value="middle">중학교</option>
+          <option value="high">고등학교</option>
+        </select>
+        <select id="grade-select">
+          <option value="">학년</option>
+        </select>
+        <select id="semester-select">
+          <option value="">학기</option>
+        </select>
+        <select id="unit-select">
+          <option value="">단원</option>
+        </select>
+      </div>
+      <div class="button-group">
+        <button id="reset-btn" class="reset-btn">초기화</button>
+        <button id="apply-btn">적용하기</button>
+      </div>
+    </div>
+
+    <hr class="content-divider">
+
+    <div id="popular-videos-section" class="content-section">
+      <h2>현재 인기 영상</h2>
+      <p class="subtitle">● 선생님들이 자주 사용한 영상이에요</p>
+      <div class="new-video-grid">
+        <h2 class="grid-title title-top1">TOP 1</h2>
+        <h2 class="grid-title title-top2">TOP 2 - 7</h2>
+
+        <a href="#" class="video-item large-item">
+          <div class="thumbnail-wrapper">
+            <img src="물리학1.png" alt="생활 속 물리현상">
+          </div>
+          <div class="video-info">
+            <h3>생활 속 물리현상, 원심력과 구심력의 비밀</h3>
+            <p class="date">2019. 4. 26.</p>
+          </div>
+        </a>
+
+        <a href="#" class="video-item">
+          <div class="thumbnail-wrapper">
+            <img src="물리학2.png" alt="아인슈타인 상대성">
+          </div>
+          <div class="video-info">
+            <h3>세상을 뒤흔든 발견 아인슈타인 상대성</h3>
+            <p class="date">2024.07.15</p>
+          </div>
+        </a>
+        <a href="#" class="video-item">
+          <div class="thumbnail-wrapper">
+            <img src="물리학3.png" alt="K-초정밀">
+          </div>
+          <div class="video-info">
+            <h3>예상치 못한 일 벌어졌다. 세계가 놀란 'K-초정밀</h3>
+            <p class="date">2025.01.10</p>
+          </div>
+        </a>
+        <a href="#" class="video-item">
+          <div class="thumbnail-wrapper">
+            <img src="물리학4.png" alt="전해질 첨가제">
+          </div>
+          <div class="video-info">
+            <h3>전기차 시대의 핵심 기술! 전해질 첨가제</h3>
+            <p class="date">2024.02.15</p>
+          </div>
+        </a>
+        <a href="#" class="video-item">
+          <div class="thumbnail-wrapper">
+            <img src="물리학5.png" alt="뉴턴의 운동 법칙">
+          </div>
+          <div class="video-info">
+            <h3>뉴턴의 운동 법칙</h3>
+            <p class="date">2019.7.11</p>
+          </div>
+        </a>
+        <a href="#" class="video-item">
+          <div class="thumbnail-wrapper">
+            <img src="물리학6.png" alt="암흑물질">
+          </div>
+          <div class="video-info">
+            <h3>암흑물질 처음으로 주장한 사람</h3>
+            <p class="date">2022.11.24</p>
+          </div>
+        </a>
+        <a href="#" class="video-item">
+          <div class="thumbnail-wrapper">
+            <img src="물리학7.png" alt="찰스 타운스">
+          </div>
+          <div class="video-info">
+            <h3>레이저의 시조 물리학자 찰스 타운스</h3>
+            <p class="date">2015.01.29</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div id="filtered-videos-section" class="content-section" style="display: none;">
+      
+      <div class="results-title-bar">
+        <h2 class="results-title">물질의 성질</h2>
+        <div class="results-path">
+          <span>초등학교</span>
+          <span>3학년 1학기</span>
+          <span>물질의 성질</span>
+        </div>
+      </div>
+
+      <div class="sub-filter-bar">
+        <div class="sub-filter-buttons">
+          <button class="active">전체</button>
+          <button>최근 업로드된 영상</button>
+          <button>과학 다큐</button>
+          <button>실험 & 사연 영상</button>
+          <button>퀴즈 영상</button>
+        </div>
+        <div class="sub-filter-search">
+          <input type="text" placeholder="🔍︎ 키워드를 검색하세요">
+        </div>
+      </div>
+      
+      <div class="video-grid">
+        <a href="#" class="video-item"><img src="물질의성질1.png" alt="세상을 이루는 물질의 근원"><div class="video-info"><h3>세상을 이루는 물질의 근원은 무엇일까?</h3><p class="date">2019. 4.19</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질2.png" alt="다양한 모습의 물질 기체"><div class="video-info"><h3>중력의 신비</h3><p class="date">2022.06.09</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질3.png" alt="두 가지 상태를 왔다 갔다"><div class="video-info"><h3>메타물질을 새롭게 디자인하다</h3><p class="date">2023.09.23</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질4.png" alt="메타물질"><div class="video-info"><h3>물질의 점도를 찾아라!</h3><p class="date">2023.12.20</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질5.png" alt="물질의 점도"><div class="video-info"><h3>다양한 모습의 물질 기체</h3><p class="date">2013.08.13</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질6.png" alt="물질의 특성"><div class="video-info"><h3>물질의 특성</h3><p class="date">2023.09.16</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질7.png" alt="금속 원소의 특성"><div class="video-info"><h3>금속 원소의 특성</h3><p class="date">2013.09.24</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질8.png" alt="산과 염기의 평형"><div class="video-info"><h3>[교과서 속 숨은 과학 찾기] 산과 염기의 평형</h3><p class="date">2013.10.07</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질9.png" alt="비커가 사라지는 이유"><div class="video-info"><h3>속에 든 비커가 사라지는 이유</h3><p class="date">2023.9.22</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질10.png" alt="간편한 과학실험"><div class="video-info"><h3>집에서 해보는 과학 실험</h3><p class="date">2021.7.20</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질11.png" alt="탄성의 성질"><div class="video-info"><h3>용수철을 이용한 탄성의 성질</h3><p class="date">2023.09.21</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질12.png" alt="우리 주위의 화합물"><div class="video-info"><h3>우리 주위의 화합물</h3><p class="date">2013.10.28</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질13.png" alt="액체의 점성"><div class="video-info"><h3>TV 광고 속 익숙한 왕관 모양! 액체의 점성 때문?</h3><p class="date">2021.12.08</p></div></a>
+        <a href="#" class="video-item"><img src="물질의성질14.png" alt="액체에서 고체가 되는 물질"><div class="video-info"><h3>충격을 가하면 액체에서 고체가 되는 신비한 물질?</h3><p class="date">2019.10.02</p></div></a>
+
+        <a href="#" id="dalgona-video-link" class="video-item"><img src="물질의성질15.png" alt="달고나 만들기"><div class="video-info"><h3>설탕이 부풀어 오른다?</h3><p class="date">2022.10.30</p></div></a>
+
+        <a href="#" class="video-item"><img src="물질의성질16.png" alt="알루미늄"><div class="video-info"><h3>알루미늄의 특징은 무엇일까?</h3><p class="date">2023.12.26</p></div></a>
+      </div>
+
+      <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+      </div>
+    </div>
+
+    <!-- 달고나 영상 페이지 만들기 -->
+    <section id="video-detail-section" class="content-section" style="display: none;">
+      
+      <div class="detail-breadcrumb">
+        <a href="#" id="back-to-list-link">물리학</a> > <span>초등학교</span> > <span>3학년 1학기</span> > <span>물질의 성질</span>
+      </div>
+
+      <div id="detail-player-wrapper" class="video-player-wrapper">
+        <img src="달고나.png" alt="달고나 만들기 영상">
+        <div class="play-button-overlay">▶</div>
+        <span class="hotclip-tag">핫클립</span>
+      </div>
+
+      <div class="detail-info-bar">
+        <div class="info-text">
+          <p class="usage-info">
+            <span class="icon-circle-group">
+              <span class="icon-circle blue"></span>
+              <span class="icon-circle black"></span>
+            </span>
+            현재 <span class="highlight-blue">150명</span>의 선생님이 사용 중이에요!
+          </p>
+          <h2>부풀어 오르는 달고나 만들기</h2>
+          <p class="date">2022.10.30</p>
+        </div>
+        <div class="info-buttons">
+          <button class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>
+            영상 다운로드
+          </button>
+          <button class="like-btn">👍 도움이 됐어요</button>
+        </div>
+      </div>
+
+      <div class="recommend-section">
+        <h3>AI 추천 학습자료</h3>
+        <div class="recommend-cards">
+          <div class="card">
+            <h4>달고나 만들기 키트</h4>
+            <p>바로가기 자료</p>
+          </div>
+          <div class="card">
+            <h4>베이킹 소다의 기능</h4>
+            <p>PDF 자료</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="related-videos-section">
+        <h3>관련 영상</h3>
+        <div class="related-videos-wrapper">
+          <div class="related-video-list">
+            <a href="#" class="video-item"><img src="달고나1.png" alt="국내 유일 달고니스트"><div class="video-info"><h3>국내 유일 달고니스트</h3><p class="date">2020.06.12</p></div></a>
+            <a href="#" class="video-item"><img src="달고나2.png" alt="달고나에 숨어있는 과학"><div class="video-info"><h3>달고나에 숨어있는 과학의 원리!</h3><p class="date">2022.01.07</p></div></a>
+            <a href="#" class="video-item"><img src="달고나3.png" alt="맛있는 과학 한 사발"><div class="video-info"><h3>컵라면의 맛있는 과학 한 사발!</h3><p class="date">2016.11.28</p></div></a>
+            <a href="#" class="video-item"><img src="달고나4.png" alt="달고나가 소다를 만나면"><div class="video-info"><h3>달고나가 소다를 만나면</h3><p class="date">2019.8.13</p></div></a>
+            </div>
+          <!-- <button class="scroll-arrow next-arrow">〉</button> -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <hr>
+
+  <footer>
+    <div class="footer-left">
+      <div class="footer-links">
+        <a href="#">사이트 소개</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">찾아오시는 길</a>
+        <a href="#">1:1 문의</a>
+      </div>
+      <div class="footer-bottom">
+        <p>주소 및 기타사항 ...<br>
+          대표 전화...&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Email...</p>
+      </div>
+    </div>
+    <div class="footer-logo">
+      <img src="ytnXwink.png" alt="YTN x Swink" width="200" height="28">
+    </div>
+  </footer>
+
+  <script src="physics.js"></script>
+</body>
+
+</html>
