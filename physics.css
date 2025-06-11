@@ -774,6 +774,11 @@ outline: none;
   border: 1px solid #343a40;
   color: #fff;
 
+body {
+  zoom: 0.9;
+}
+
+
   @media (max-width: 480px) {
   nav a {
     margin: 10px 0;
