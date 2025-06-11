@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       attachPlayEvent();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 });
